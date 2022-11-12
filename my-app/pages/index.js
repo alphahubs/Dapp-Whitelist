@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Web3Modal from 'web3modal';
+import Web3Modal from "web3modal";
 import styles from '../styles/Home.module.css';
 import { providers, Contract } from "ethers";
 import { useEffect, useRef, useState } from "react";
@@ -11,11 +11,11 @@ export default function Home() {
   //joinedWhitelist keeps track of whether the current metamask address has joined the whitelist or not
   const [joinedWhitelist, setJoinedWhitelist] = useState(false);
   //loading is set to true when we are waiting for a transaction to get mined
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   //numberOfWhitelisted tracks the number of addresses's whitelisted
-  const [numberOfWhitelisted, setNumberOfWhitelisted] = useState(0)
+  const [numberOfWhitelisted, setNumberOfWhitelisted] = useState(0);
   //create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
-  const web3Modal = useRef();
+  const web3ModalRef = useRef();
 
   /**
    * Returns a Provider or Signer object representing the Ethereum RPC with or without the
@@ -33,7 +33,7 @@ export default function Home() {
   const getProviderOrSigner = async (needSigner = false) => {
     //connect to metamask
     //since we store 'web3modal' as a reference, we need to access the 'current' value to gete access to underlying object
-    const web3Modal = await getWeb3Modal.current.connect();
+    const provider = await web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
 
     //If user is not connected to the goerli network, let them know and throw an error
@@ -175,8 +175,8 @@ export default function Home() {
   // The array at the end of function call represents what state changes will trigger this effect
   // In this case, whenever the value of `walletConnected` changes - this effect will be called
   useEffect(() => {
-    // if wallet is not connected, create a new instance of Web3Modal and connect the MetaMask wallet
-    if (!walletConnected) {
+     // if wallet is not connected, create a new instance of Web3Modal and connect the MetaMask wallet
+     if (!walletConnected) {
       // Assign the Web3Modal class to the reference object by setting it's `current` value
       // The `current` value is persisted throughout as long as this page is open
       web3ModalRef.current = new Web3Modal({

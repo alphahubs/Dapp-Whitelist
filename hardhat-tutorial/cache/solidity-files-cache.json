@@ -37,8 +37,8 @@
       ]
     },
     "C:\\Users\\fiyin\\Desktop\\ubuntu 20.04\\Ethereum\\Whitelist-Dapp\\hardhat-tutorial\\contracts\\whitelist.sol": {
-      "lastModificationDate": 1667140468297,
-      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "lastModificationDate": 1667492043635,
+      "contentHash": "40d12ccd41cc51082faaadfb589d5a89",
       "sourceName": "contracts/whitelist.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -64,8 +64,12 @@
         }
       },
       "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "Whitelist"
+      ]
     }
   }
 }
